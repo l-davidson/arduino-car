@@ -53,7 +53,7 @@ void setup() {
 
   Serial.begin(9600);
 
-  // // set motor speed
+  // set motor speed
   analogWrite(enA, 200);
   analogWrite(enB, 200);
 }

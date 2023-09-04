@@ -18,7 +18,6 @@ int A_turn_speed = 30;
 int B_turn_speed = 30;
 
 int run_time = 500;       // time to run straight when making turns to avoid obstacle
-int turn_time_45 = 475;   // time to turn 45 degrees in milliseconds   ***not tested***
 int turn_time_90 = 300;   // time to turn 90 degrees in milliseconds
 
 // ultrasonic sensor
@@ -35,8 +34,6 @@ NewPing sonar(trigger, echo, max_dist);
 
 // servo motor
 Servo myservo;
-
-// int servoPos = 90;  // point forward (range 0-180)
 
 // ----------------MOTOR FUNCTIONS----------------
 
@@ -68,11 +65,6 @@ void left() {
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
-
-  // digitalWrite(in1, LOW);
-  // digitalWrite(in2, HIGH);
-  // digitalWrite(in3, HIGH);
-  // digitalWrite(in4, LOW);
 }
 
 void right() {
@@ -83,11 +75,6 @@ void right() {
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
-
-  // digitalWrite(in1, HIGH);
-  // digitalWrite(in2, LOW);
-  // digitalWrite(in3, LOW);
-  // digitalWrite(in4, HIGH);
 }
 
 void stop() {
@@ -103,7 +90,6 @@ float getDist() {
   float duration = sonar.ping();
   float dist = (duration / 2) * 0.0343; // at 20 degrees C
 
-  // line added that made sketch work
   if (dist == 0) {
     dist = 100.00;
   }
@@ -256,21 +242,12 @@ void loop() {
 
   Serial.print("front dist = ");
   Serial.println(front_dist);
-  
-  // if (front_dist < stop_dist) {
-  //     changeDir();
-  // } else {
-  //     forward();
-  // }
 
   while(front_dist > stop_dist) {
     forward();
     front_dist = getDist();
     delay(200);
   }
-
+  
   changeDir();
-
-  // delay(100);
-
 }

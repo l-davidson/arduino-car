@@ -19,10 +19,8 @@ int A_turn_speed = 40;
 int B_turn_speed = 40;
 
 int straight_time = 730;   // time to go straight when avoiding obstacle
-int turn_time_45 = 300;     // time to turn 45 degrees in milliseconds
 int turn_time_90_left = 400;     // time to turn 90 degrees left in milliseconds
 int turn_time_90_right = 400;     // time to turn 90 degrees right in milliseconds
-
 
 // IR sensors
 const int left_IR = A3;
@@ -42,8 +40,6 @@ NewPing sonar(trigger, echo, max_dist);
 
 // servo motor
 Servo myservo;
-
-// int servoPos = 90;  // point forward (range 0-180)
 
 // ----------------MOTOR FUNCTIONS----------------
 
@@ -176,9 +172,6 @@ void avoidObstacle() {
     
     forward();
     delay(straight_time);
-    
-    // sharpLeft();
-    // delay(350);
 
     if ((digitalRead(left_IR) == 1) || (digitalRead(right_IR) == 1)) {
       sharpLeft();
@@ -204,9 +197,6 @@ void avoidObstacle() {
     
     forward();
     delay(straight_time);
-
-    // sharpRight(); 
-    // delay(turn_time_90_right);
 
     if ((digitalRead(left_IR) == 1) || (digitalRead(right_IR) == 1)) {
       sharpRight();
@@ -258,7 +248,6 @@ void loop() {
   // 4. stop at T intersection
 
   front_dist = getDist();
-  // delay(200);
   Serial.print("front dist = ");
   Serial.println(front_dist);
 

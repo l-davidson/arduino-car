@@ -75,10 +75,6 @@ void setup() {
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
 
-  // set motor speed
-  // analogWrite(enA, 100);
-  // analogWrite(enB, 100);
-
   // IR sensors
   pinMode(left_IR, INPUT);
   pinMode(right_IR, INPUT);
